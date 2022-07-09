@@ -1,0 +1,48 @@
+在某种程度上，可以认为DataFrame是“具有相同index的Series的集合”
+import pandas as pd 
+
+data= {'rank':[1, 2, 3, 4],'GDP':[80855, 77388, 68024, 47251]}
+city= ['GD','JS','SD','ZJ']
+df= pd.DataFrame(data, index=city)
+print(df)
+#输出结果
+    rank    GDP
+GD     1  80855
+JS     2  77388
+SD     3  68024
+ZJ     4  47251
+
+
+data = [['May',689],['Tony',659],['Kevin',635]]
+rank = [1,2,3]
+result = pd.DataFrame(data,index=rank,columns=["name","score"])
+print(result)
+# 结果输出
+    name  score
+1    May    689
+2   Tony    659
+3  Kevin    635
+
+#DataFrame 的三种属性
+import pandas as pd
+data = {'rank':[1, 2, 3, 4],'GDP':[80855, 77388, 68024, 47251]}
+city = ['GD','JS','SD','ZJ']
+df = pd.DataFrame(data, index=city)
+print(df.dtypes)      #rank    int64         #通过访问DataFrame对象的dtypes属性，返回了变量df的每一列数据的数据类型
+                       GDP     int64
+                       dtype: object
+print(df.values)      # [[    1 80855]       #通过访问DataFrame对象的values属性，返回了变量df的值values
+                        [    2 77388]
+                        [    3 68024]
+                        [    4 47251]]
+print(df.index)        #Index(['GD', 'JS', 'SD', 'ZJ'], dtype='object')   #通过访问DataFrame对象的index属性，返回了变量df的行索引index
+
+
+#DataFrame的轴
+axis=0                #垂直方向
+axis=1                #水平方向
+ex: df.mean(axis=0)
+
+
+
+
