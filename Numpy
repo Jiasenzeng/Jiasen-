@@ -1,5 +1,7 @@
 import numpy as np 
 #NP形成数组
 arr =  np.array([1, 2, 3, 4, 5])
-#可以直接加减乘除
+#可以直接加减乘除数字
 print(arr+2)
+#可以直接列表相加减
+print(arrOne+arrTwo)
