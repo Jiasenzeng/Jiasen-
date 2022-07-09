@@ -1,0 +1,53 @@
+# 导入pandas模块，并以"pd"为该模块的简写
+import pandas as pd
+data = pd.read_csv("/Users/yequ/电商数据清洗.csv")
+
+# 使用print()输出变量data中的 "payment" 列
+print(data["payment"])
+
+# 将变量data中 的 "price" 列修改为以元为单位的数据
+data["price"] = data["price"]/100
+
+# 访问和修改多列数据
+print(data[["payment", "price", "cutdown_price"]])
+data[["payment","price","cutdown_price"]] = data[["payment","price","cutdown_price"]]/100
+
+# 输出特定一行的数据
+print(data.loc[3515712])
+# 输出订单号3515712到3515716的数据
+print(data.loc[3515712:3515716])
+# 输出data变量里订单号为 3515714 、3601839 和 3601842 的行数据
+print(data.loc[[3515714,3601839,3601842]])
+# 访问了index为3515712，columns为"payment"对应的元素
+print(data.loc[3515712,"payment"])
+
+# 输出data变量里第四行的数据
+print(data.iloc[3])
+# 输出data变量里第1行到第5行的数据
+print(data.iloc[0:5])
+# 输出data变量里第2行、第145行和第276行的数据
+print(data.iloc[[1,144,275]])
+# 输出data变量里：第1行，第3列对应的元素
+print(data.iloc[0,2])
+# 输出data变量里：第1，3行，第3，5列对应的元素
+print(data.iloc[[0,2],[2,4]])
+
+在pandas模块中，逻辑运算符有以下几种：
+& 表示并且
+| 表示或者
+~ 表示非
+
+#判断
+# 使用比较运算判断这一列哪些值大于0
+print(data["cutdown_price"]>0)
+# 输出"cutdown_price"这一列值里大于0的行，把判断结果为True的行数据直接返回
+print(data[data["cutdown_price"]>0])
+# 输出"cutdown_price"这一列值里大于0和"post_fee"这一列值里大于0的行
+print(data[(data["cutdown_price"]>0) & (data["post_fee"]>0)]) 
+
+
+
+
+
+
+
