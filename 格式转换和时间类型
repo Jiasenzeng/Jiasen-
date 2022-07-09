@@ -1,0 +1,40 @@
+# 时间类型数据的构造
+from datetime import datetime
+start = datetime(2020, 5, 1, 23, 59, 59)
+end = datetime(2020, 10, 1)
+print(start)
+print(end)
+print(type(start))
+#output
+2020-05-01 23:59:59
+2020-10-01 00:00:00
+<class 'datetime.datetime'>
+
+# 时间的加减
+start = datetime(2020, 5, 1, 23, 59, 59)
+end = datetime(2020, 10, 1)
+timeSpan = end - start
+
+# 字符串转时间
+# 使用to_datetime()函数，将create_time和pay _time转化成时间格式
+df["create_time"] = pd.to_datetime(df["create_time"])
+df["pay_time"] = pd.to_datetime(df["pay_time"])
+
+#时间转字符串
+df["create_time"] = df["create_time"].dt.strftime("%Y-%m")    #datetime类型的数据要先通过后缀.dt转化。通过后缀.dt转化后，再通过strftime()函数转为字符串
+df["pay_time"] = df["pay_time"].dt.strftime("%Y-%m")          #"%Y-%m"表示转为"年-月"的形式; %m"代表月，"%M"代表分钟。
+
+#astype( )函数: 使用astype()函数，里面的参数是需要转化成为的数据类型。
+data = {"a":[1.134,2.12,3.54,0.23],"b":[1,2,3,0]}
+df = pd.DataFrame(data)
+df["b"] = df["b"].astype(float)
+
+
+
+
+
+
+
+
+
+
