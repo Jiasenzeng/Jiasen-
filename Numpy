@@ -1,0 +1,5 @@
+import numpy as np 
+#NP形成数组
+arr =  np.array([1, 2, 3, 4, 5])
+#可以直接加减乘除
+print(arr+2)
