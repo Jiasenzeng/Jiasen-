@@ -1,0 +1,24 @@
+import pandas as pd
+data = pd.read_csv("/Users/yequ/电商数据清洗.csv")    #工具为pd.read_csv(" ")
+print(data)
+
+data = pd.read_csv("/Users/order.csv",encoding="utf-8")   #添加encoding="utf-8"，为了防止乱码。
+
+data = pd.read_csv("/Users/yequ/电商数据清洗.csv", index_col="order_id")   #添加index_col="order_id",我们指定 "order_id" 这一列作为index
+
+data = pd.read_csv("/Users/yequ/电商数据清洗.csv",usecols=["payment","items_count"])
+#添加usecols=["payment","items_count"]只读取 "payment" 和 "items_count" 这两列数据
+
+data = pd.read_csv("/Users/yequ/order_withoutColumns.csv", header=None,names=["订单号","用户id","支付金额","商品价格","购买数量","支付时间"])                                                              
+# header=None，表明原数据中没有columns；names，将包含columns的列表传入该参数即可给数据添加columns。比如，给没有columns的CSV文件添加 "订单号",
+# "用户id","支付金额","商品价格","购买数量","支付时间" 作为columns
+
+小结
+# 防止乱码 - encoding="utf-8"
+# 指定index - index_col
+# 读取指定列 - usecols
+# 添加columns - header=None 和 names
+
+data.to_csv("/Users/yequ/电商数据清洗2.csv")                          #保存文件，用于将DataFrame转换为CSV数据。
+data.to_csv("/Users/yequ/电商数据清洗2.csv",index=False)              #通过设置参数index=False，保证不会将行索引信息写入第一列
+data.to_csv("/Users/yequ/电商数据清洗2.csv",encoding="utf-8-sig")     #通过encoding="utf-8-sig"为了防止乱码
