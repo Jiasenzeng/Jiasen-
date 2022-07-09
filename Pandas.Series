@@ -13,12 +13,11 @@ print(info['JS'])      #77388
 #Series的三种类型
 import pandas as pd
 info = pd.Series([80855, 77388, 68024, 47251, 40471],index = ['GD','JS','SD','ZJ','HN'])
-
 # 输出了info中的数据的类型
-print(info.dtype)      #int #dtype 通过访问Series对象的dtype属性，返回了变量info的数据类型，并将其输出
+print(info.dtype)      #int   #dtype 通过访问Series对象的dtype属性，返回了变量info的数据类型，并将其输出
 
 # 输出了info中的值values
-print(info.values)     #[80855 77388 68024 47251 40471] #通过访问Series对象的values属性，返回了变量info的值values，并将其输出
+print(info.values)     #[80855 77388 68024 47251 40471]   #通过访问Series对象的values属性，返回了变量info的值values，并将其输出
 
 # 输出了变量info的索引index
-print(info.index)     #Index(['GD', 'JS', 'SD', 'ZJ', 'HN'], dtype='object')  #通过访问Series对象的index属性，返回了变量info的索引index，将其输出
+print(info.index)     #Index(['GD', 'JS', 'SD', 'ZJ', 'HN'], dtype='object')    #通过访问Series对象的index属性，返回了变量info的索引index，将其输出
