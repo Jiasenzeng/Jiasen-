@@ -1,6 +1,7 @@
 import pandas as pd
-data = pd.read_csv("/Users/yequ/电商数据清洗.csv")    #工具为pd.read_csv(" ")
-print(data)
+data = pd.read_csv("/Users/yequ/电商数据清洗.csv")                                   #读取Csv 工具为pd.read_csv(" ")
+data = pd.read_excel("/Users/yequ/2019年4月销售订单.xlsx",sheet_name="销售订单数据")   #读取Excel
+
 
 data = pd.read_csv("/Users/order.csv",encoding="utf-8")   #添加encoding="utf-8"，为了防止乱码。
 
@@ -22,3 +23,5 @@ data = pd.read_csv("/Users/yequ/order_withoutColumns.csv", header=None,names=["�
 data.to_csv("/Users/yequ/电商数据清洗2.csv")                          #保存文件，用于将DataFrame转换为CSV数据。
 data.to_csv("/Users/yequ/电商数据清洗2.csv",index=False)              #通过设置参数index=False，保证不会将行索引信息写入第一列
 data.to_csv("/Users/yequ/电商数据清洗2.csv",encoding="utf-8-sig")     #通过encoding="utf-8-sig"为了防止乱码
+
+
