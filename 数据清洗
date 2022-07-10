@@ -1,0 +1,27 @@
+#快速浏览数据集
+df.info()
+
+# 寻找缺失值
+#isnull()函数会对每一个数据是否为缺失值进行判断。缺失值返回为True，不是缺失值返回为False。
+print(df['platform'].isnull())
+
+#删除指定行
+# dfPayNull就是，包含所有payment_provider这一列缺失值的行
+dfPayNull = df[df['payment_provider'].isnull()]
+# 使用drop函数，将包含所有payment_provider这一列缺失值的行删除
+df.drop(index=dfPayNull.index, inplace = True)
+
+#填充缺失值
+df['payment_provider'].fillna("wxpay",inplace = True)
+
+#识别并处理异常值
+# 使用布尔索引，输出order_id<=0的筛选结果
+print(df[df["order_id"]<=0])
+
+#判断是否存在
+print(df['price'].isin([25.00,68.00,248.00]))
+print(~df['price'].isin([25.00,68.00,248.00]))                                      #不是用~，表示相反的
+dfWrongPay = df[~df['payment_provider'].isin(["wxpay","alipay","applepay"])]        # 将payment_provider这一列不是wxpay，alipay，applepay的异常值筛选出来
+
+#识别并处理重复值
+print(df['order_id'].duplicated())                          #使用duplicated函数，将order_id这一列的重复值做判断，用print输出           
