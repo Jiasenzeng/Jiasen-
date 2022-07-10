@@ -1,0 +1,31 @@
+# 使用mean()函数求平均值
+import pandas as pd
+data = pd.read_csv("/Users/yequ/电商数据清洗.csv")
+# 对data中的"payment"列使用mean()函数求平均值，并赋值给pay_mean
+pay_mean = data["payment"].mean()
+print(pay_mean)
+
+#对pay_mean进行四舍五入，并输出
+print(pay_mean.round())
+# 使用print()输出pay_mean四舍五入保留2个小数后的值
+print(pay_mean.round(2))
+# 使用print()输出all_mean四舍五入保留百位数后的值
+print(all_mean.round(-2))
+
+#多列访问 使用print()输出变量data中的 "payment", "price", "cutdown_price" 这3列数据的均值
+print(data[["payment","price","cutdown_price"]].mean())
+
+# 输出"payment"列中的最大值
+print(data["payment"].max())
+
+# 输出"price"列中的最小值
+print(data["price"].min())
+
+# 输出"cutdown_price"列中的数据之和
+print(data["cutdown_price"].sum())
+
+# 使用print()输出变量data中的 "order_id" 列的个数
+print(data["order_id"].count())
+
+# 使用print()输出变量data中的 "price" 列的中位数
+print(data["price"].median())
