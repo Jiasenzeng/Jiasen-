@@ -1,6 +1,13 @@
 在某种程度上，可以认为DataFrame是“具有相同index的Series的集合”
 import pandas as pd 
 
+#使用head()函数可以读取DataFrame的数据
+top_5 = df.head() #空格内无东西)访问前5行数据，并赋值给变量top_5
+tail()            #空格内无东西)访问末尾5行数据，并赋值给变量top_5
+
+
+
+注意⚠️：如果head()函数中不添加参数，则默认读取前5行，添加参数则读取指定行数。
 data= {'rank':[1, 2, 3, 4],'GDP':[80855, 77388, 68024, 47251]}
 city= ['GD','JS','SD','ZJ']
 df= pd.DataFrame(data, index=city)
@@ -42,6 +49,36 @@ print(df.index)        #Index(['GD', 'JS', 'SD', 'ZJ'], dtype='object')   #通�
 axis=0                #垂直方向
 axis=1                #水平方向
 ex: df.mean(axis=0)
+
+#字符串筛选函数
+# 索引店铺名称是否有鱼字
+fishpot = df[df["店铺名称"].str.contains("鱼")]
+
+#筛选最大值
+#获取"口味评分"列的最大值，并赋值给taste
+taste = fishpot["口味评分"].max()
+
+#将（）设置为行索引
+# 将店铺名称设置为行索引，将新的Dataframe赋值给变量fishpot2
+fishpot2 = fishpot.set_index("店铺名称")
+
+#获取分数最高的行索引，也就是店铺名称
+tasteBest = fishpot2["口味评分"].idxmax()
+
+# 重置索引，还原dataframe
+fishpot3 = fishpot2.reset_index()
+
+# 通过赋值，新增列
+df["性价比评分"] = (df["口味评分"]/df["人均消费"])*40            #性价比评分为新列，df["新列名"] = new_value
+
+# 使用sort_values()对df的列进行降序排序，并赋值给df_1
+df_1 = df.sort_values(by="性价比评分",ascending=False)        #ascending=False，表示对数据进行降序排序
+
+
+
+
+
+
 
 
 
