@@ -1,0 +1,117 @@
+import matplotlib.pyplot as plt
+
+# 将字体设置为 Arial Unicode MS 
+plt.rcParams["font.sans-serif"] = "Arial Unicode MS"
+
+# 使用plt.figure()函数创建画布
+# 添加参数figsize设置画布大小为(4,3)
+# 添加参数facecolor设置画布颜色为'blue'
+plt.figure(figsize=(4,3),facecolor='blue')
+
+# 使用plt.show()函数显示图像
+plt.show()
+
+# 颜色设置为"orange", "o"作为标记点的样式，绘制折线图
+# "每月总销量"作为图例，绘制折线图
+plt.plot(data["month"],data["sum"],color="orange",marker="o",label="每月总销量")
+
+# 使用plt.legend()函数显示图例，图例是集中于地图一角或一侧的地图上各种符号和颜色所代表内容与指标的说明，有助于更好的认识地图
+plt.legend()
+# TODO 使用plt.legend()函数和loc参数，将图例显示在左上角"upper left"
+plt.legend(loc="upper left")
+
+#绘制直方图，并且设置100个区间
+plt.hist(df["单价价格(元/平方)"], bins=100)
+
+# 使用plt.xlabel()函数，将x轴标题设置为"月份"
+plt.xlabel("月份")
+# 使用plt.ylabel()函数，将y轴标题设置为"销量"
+plt.ylabel("销量")
+# 使用plt.title()函数，将图表标题设置为"2019年8月至2020年7月书店每月销量走势"
+plt.title("2019年8月至2020年7月书店每月销量走势")
+
+#plt.bar()函数绘制柱状图
+# 以data["month"]为x轴的值和data["sum"]为y轴的值，绘制柱状图
+# 将柱子的宽度设置为0.6，颜色设置为"orange"
+plt.bar(data["month"],data["sum"],width=0.6,color="orange")
+
+# plt.scatter()函数绘制散点图
+plt.scatter(data["ads_fee"],data["sales"],color="green")
+# 使用plt.xlabel()函数，将x轴标题设置为"广告费用"
+plt.xlabel("广告费用")
+# 使用plt.ylabel()函数，将y轴标题设置为"销量"
+plt.ylabel("销量")
+
+#绘制双y轴叠加图
+# 绘制曝光量的柱状图
+plt.bar(data["month"],data["exposure"])
+# 使用plt.twinx()函数，添加另一个y轴
+plt.twinx()
+
+#百分比堆积柱状图
+# 使用plot.bar()函数
+# 根据data变量，以"month"为x轴，["一楼","二楼","三楼"]为y轴
+# 绘制百分比堆积柱状图
+data.plot.bar("month",["一楼","二楼","三楼"],stacked=True)
+
+#绘制多子图
+# 使用plt.subplot()函数添加4个子图
+# 子图有两行两列
+# 选择序号为1子图
+plt.subplot(2,2,1)
+# 选择序号为2子图
+plt.subplot(2,2,2)
+
+#避免坐标轴遮挡-旋转x轴刻度
+# 使用plt.xticks()函数旋转x轴的刻度至90度
+plt.xticks(rotation=90)
+
+# 使用plt.tight_layout()函数来调整子图布局
+plt.tight_layout()
+
+#在子图上使用pandas模块绘图，则需要在绘图的函数中，传入ax=plt.gca()
+
+
+#使用var()函数，可以快速对一列数据求方差。
+
+#使用std()函数，可以快速对一列数据求标准差。
+
+#描述函数
+# 使用describe()函数计算房价单价(元/平方)的多个统计指标，并将其输出，得到var等指标
+print(df["单价价格(元/平方)"].describe())
+
+# 使用astype()函数将"所在区域"列的数据类型强制转化为分类型
+df["所在区域"] = df["所在区域"].astype('category')
+
+# 使用value_counts()函数，对"所在区域"列的数据进行频数统计，并将其输出
+print(df["所在区域"].value_counts())
+
+#绘制并子图
+plt.subplot()
+
+# stack：将数据的列“旋转”为行
+# unstack：将数据的行“旋转”为列
+# 使用unstack()函数将groupByCategory按照"category"重新排列
+groupByCategory = groupByCategory.unstack("category")
+
+# apply()可把函数应用到数组的某个维度上其函数的的一般格式为： apply(x, MARGIN, FUN, ...) 其中 则包括了任何想传递给FUN的参数。
+# 获取各营业额占当月营业额的比例，并赋值给变量percentage
+percentage = groupByCategory.apply(getPercentage)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
